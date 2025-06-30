@@ -80,3 +80,20 @@ text-decoration: underline;
     background-color: white;
 }
 /* Card Effect: */
+
+.add-btn{
+    background-color:#fe424d !important;
+    border:none !important;
+}
+.edit-btn{
+    background-color:#fe424d !important;
+    border:none !important;   
+}
+
+/* Show Page */
+
+
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}

@@ -75,23 +75,36 @@ app.get("/listings/:id/edit",async (req,res)=>{
   let {id}=req.params;
   const listing=await Listing.findById(id);
   res.render("listings/edit",{listing});
-})
+});
 
-app.put("/listings/:id",async(req,res)=>{
-  let {id}= req.params;
-  // yeh line kya kr rhi hai yeh smjhao
-  await Listing.findByIdAndUpdate(id,{...req.body.listing});
+app.put("/listings/:id", async (req, res) => {
+  const { id } = req.params;
+  const { title, description, image, price, location, country } = req.body.listing;
+
+  const updatedListing = {
+    title,
+    description,
+    image: {
+      url: image,
+      filename: ""  // optional, or generate from image URL
+    },
+    price,
+    location,
+    country
+  };
+
+  await Listing.findByIdAndUpdate(id, updatedListing);
   res.redirect("/listings");
-  // res.redirect(`/listings/${id}`);
-})
+});
+
+
 
 app.delete("/listings/:id",async(req,res)=>{
   let {id}=req.params;
   let deletedlisting=await Listing.findByIdAndDelete(id);
   console.log(deletedlisting);
   res.redirect("/listings");
-})
-
+});
 app.listen(port,(req,res)=>{
 console.log(`Listening to ${port} right now`);
 });
