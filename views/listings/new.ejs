@@ -3,10 +3,11 @@
 <div>
     <div class="col-8 offset-2">
     <h3>Create New listing</h3>
-    <form method="POST" action="/listings" novalidate class="needs-validation">
+    <form method="POST" action="/listings" 
+    novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
-        <lable for="title" 
-        class="form-label">Title</lable>
+        <label for="title" 
+        class="form-label">Title</label>
         <input name="listing[title]"
         placeholder="Add a catchy title" 
         class="form-control" 
@@ -23,28 +24,25 @@
         class="form-label">Description</label>
         <textarea name="listing[description]" class="form-control"
         placeholder="Enter description" required></textarea>   
-        <div class="valid-feedback">
-      Enter the valid text!
+        <div class="invalid-feedback">
+          Please Enter a short description.
        </div> 
         </div>
 
         <div class="mb-3">
-        <label for="image" class="form-label">Image</label>
+        <label for="image" class="form-label">Upload Listing Image</label>
         <input name="listing[image]" 
-        placeholder="Enter Image URL/LINK"
-        type="url"
+        type="file"
         class="form-control"
         >
-      <div class="invalid-feedback">
-        Image Invalid.
-      </div>
+        required
         </div>
 
         <div class="row">
         <div class="mb-3">
         <div class="mb-3 col-4">
         <label for="price" class="form-label">Price</label>
-        <input name="listing[price]" placeholder="Enter Price:" type="number" class="form-control" required> 
+        <input name="listing[price]" placeholder="Enter Price:" class="form-control" required> 
         </div>  
        <div class="invalid-feedback">
         Please enter the price.
@@ -56,7 +54,10 @@
          placeholder="Enter Country"
         type="text"
         class="form-control"
-         required>  
+         required>    
+         <!-- Yeh vala joh required hai voh depoending 
+          upon different browers ho skta hai apni styling and all change
+          kre  -->
         </div> 
       <div class="invalid-feedback">
         Please enter the country name.

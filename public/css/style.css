@@ -49,11 +49,14 @@ text-decoration: underline;
 
 /* Cards */
 
-.card{
+/* .card{
     border:none !important;
     margin-bottom: 2 rem;
+} */
+.listing-card{
+    border:none !important;
+    margin-bottom: 2rem;
 }
-
 .card-img-top{
     border-radius: 1rem !important;
     width: 100% !important;
@@ -80,7 +83,6 @@ text-decoration: underline;
     background-color: white;
 }
 /* Card Effect: */
-
 .add-btn{
     background-color:#fe424d !important;
     border:none !important;
@@ -96,4 +98,10 @@ text-decoration: underline;
 .show-card{
     padding-left: 0;
     padding-right: 0;
+}
+
+
+#map{
+height:400px;
+width:80vh;
 }

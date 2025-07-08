@@ -1,44 +1,77 @@
 <% layout("/layouts/boilerplate")%>
+<!-- hum chahte edit mai jaakr hum nayi image ko upload  -->
+
     <div class="row mt-3">
         <div class="col-8 offset-2">
         <h3>Edit listing</h3>
-    <form method="POST" action="/listings/<%=listing._id%>?_method=PUT">
+    <form method="POST" 
+    action="/listings/<%=listing._id%>?_method=PUT"
+    novalidate
+    class="needs-validation"
+    enctype="multipart/form-data">
         <div class="mb-3">
         <label for="title"class="form-label">Title</label>
         <input name="listing[title]" value="<%=listing.title%>"placeholder="Enter title">
+      <div class="invalid-feedback">
+        Title Invalid.
+      </div>
         </div>
-        
         <div class="mb-3">
         <label for="description"class="form-label">Description</label>
         <textarea name="listing[description]" class="form-control" placeholder="Enter description" rows="10" cols="100"><%=listing.description%></textarea>
         </div>
+      <h4>Original Listing Image: </h4> 
+        <div class="mb-3">
+          <img src="<%=originalImageUrl%>">
+        </div>
         <br> 
         <div class="mb-3">
-         <label for="image"class="form-label">Image</label>
+         <label for="image"class="form-label">Upload New Image</label>
          <!-- Image handling was the key here yahin faste hai. -->
-        <input name="listing[image]" 
+       <input name="listing[image]" 
        class="form-control" 
-       value="<%= listing.image?.url || listing.image || '' %>" 
-       type="url" 
+       type="file"
        placeholder="Enter Image URL">
-        </div>
+      <!-- <div class="invalid-feedback">
+        Image Invalid.
+      </div> -->
+       </div>
         <br> 
         <div class="row">
         <div class="mb-3 col-md-4">
          <label for="price"class="form-label">Price</label>
          <input name="listing[price]" value="<%=listing.price%>" placeholder="Enter the price" type="number">
+       <div class="invalid-feedback">
+        Enter Price.
+       </div> 
         </div>
         <div class="mb-3 col-md-8">
-         <label for="country"class="form-label">Country</label>
-            <input name="listing[country]" value="<%=listing.country%>" placeholder="Enter country" type="text">
+        <label for="country"class="form-label">Country</label>
+        <input name="listing[country]" 
+        class="form-control" 
+        value="<%=listing.country%>" 
+        placeholder="Enter country" 
+        type="text"
+        required>
+       <div class="invalid-feedback">
+        Enter a valid country name.
+       </div> 
         </div>
         </div>
         <br> 
         <div class="mb-3 ">
-         <label for="Location"class="form-label">Location</label>
-        <input name="listing[location]" value="<%=listing.name%>" placeholder="Enter location" type="text">
+        <label for="Location"class="form-label">Location</label>
+        <input name="listing[location]" 
+        value="<%=listing.location%>" 
+        class="form-control" 
+        placeholder="Enter location" 
+        type="text"
+        required >
+       <div class="invalid-feedback">Enter a valid Location name.</div>    
         </div>
         <br>
         <button class="btn btn-dark edit-btn mt-3">Edit</button> 
     </form>
-</div></div>
+</div>
+</div>
+

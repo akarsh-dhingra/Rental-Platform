@@ -1,0 +1,12 @@
+const express=require("express");
+const router=express.Router({mergeParams:true});
+const wrapAsync=require("../utils/wrapAsync.js");
+const ExpressError=require("../utils/ExpressError.js");
+const {listingSchema,reviewSchema}=require("../schema.js");
+const Review=require("../models/reviews.js");
+const Listing=require("../models/listing.js");
+const {isLoggedIn, isOwner,validateListing,validateReview,isReviewAuthor}=require("../middleware.js");
+const ReviewController=require("../controllers/reviews.js");
+router.post("/",isLoggedIn,validateReview,wrapAsync(ReviewController.createReview));
+router.delete("/:reviewId",isLoggedIn,isReviewAuthor,wrapAsync(ReviewController.deletereview));
+module.exports=router;
