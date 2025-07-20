@@ -1,2 +1,23 @@
 // 1. For new route go to get/listings/new  ->Form submit hone par ak post request jayegi
 // Create route par POST par 
+
+<style>
+  .search-btn{
+    background-color: #fe424d;
+    color:#fff;
+    border-radius: 25px;
+    padding:0 1rem 0 1rem;
+  }
+  .search-btn:hover{
+    color:#fff;
+    background-color: #fe424d;
+  }
+  .search-btn i{
+    display:inline;
+    margin-right:0.5rem;
+  }
+  .search-inp{
+    border-radius: 25px;
+    padding:0.5rem 3rem 3rem 0.5rem
+  }
+</style>

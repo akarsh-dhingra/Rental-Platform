@@ -9,6 +9,8 @@ const {isLoggedIn, isOwner,validateListing,validateReview}=require("../middlewar
 const flash=require("connect-flash");
 const multer  = require("multer")
 const {storage}=require("../cloudconfig.js");
+
+
 // const upload = multer({ dest: 'uploads/' })
 // multer pehle local storag mai store kra rha tha ab voh 
 // storage mai store krayega cloud storage mai.

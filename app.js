@@ -19,7 +19,6 @@ const wrapAsync=require("./utils/wrapAsync.js");
 const ExpressError=require("./utils/ExpressError.js");
 const {listingSchema,reviewSchema}=require("./schema.js");
 
-
 const session=require("express-session");
 const flash=require("connect-flash");
 const passport=require("passport");
@@ -63,11 +62,6 @@ maxAge:7*24*60*60*1000,
 httponly:true
 }
 };
-
-app.get("/",(req,res)=>{
-    res.send("Root path is working");
-});
-
 app.use(session(sessionoptions));
 app.use(flash());
 // passport humesha session ko bhi use krega  
@@ -82,6 +76,17 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 // jitne bhi users  aaye voh ak localStrategy ka through authenticate hone chahiye 
 
+app.use((req,res,next)=>{
+  res.locals.success=req.flash("success");
+  res.locals.error=req.flash("error");
+  res.locals.currUser=req.user;
+  next();
+});
+
+app.get("/",(req,res)=>{
+    res.render("users/signup");
+});
+
 app.get("/demouser",async(req,res)=>{
   // Creation
 let fakeUser=new User({
@@ -93,12 +98,6 @@ let newUser=await User.register(fakeUser,"helloworld");
 res.send(newUser);
 });
 
-app.use((req,res,next)=>{
-  res.locals.success=req.flash("success");
-  res.locals.error=req.flash("error");
-  res.locals.currUser=req.user;
-  next();
-});
 
 //pehle flash aayega fir routes aayenge.
 

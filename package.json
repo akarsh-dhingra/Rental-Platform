@@ -1,4 +1,7 @@
 {
+  "engines":{
+    "node":"24.2.0"
+  },
   "name": "major",
   "version": "1.0.0",
   "description": "",
